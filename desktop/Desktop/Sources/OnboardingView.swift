@@ -263,11 +263,11 @@ struct OnboardingView: View {
           totalSteps: OnboardingFlow.introStepCount,
           eyebrow: "Permission",
           title: "Let Omi send reminders.",
-          description: "Notifications let Omi send proactive tips.",
+          description: "Notifications let Omi send proactive insights.",
           permissionType: "notifications",
           icon: "bell.badge.fill",
           reasonTitle: "Notifications",
-          reasonDetail: "This lets Omi send reminders and proactive tips.",
+          reasonDetail: "This lets Omi send reminders and proactive insights.",
           primaryActionLabel: "Enable notifications",
           requiresRestart: false,
           onContinue: {
@@ -406,6 +406,10 @@ struct OnboardingView: View {
             AnalyticsManager.shared.onboardingStepCompleted(step: 15, stepName: "DataSources")
             currentStep = 16
           },
+          onSkip: {
+            AnalyticsManager.shared.onboardingStepCompleted(step: 15, stepName: "DataSources_Skipped")
+            currentStep = 16
+          },
           onForceComplete: handleOnboardingComplete
         )
       } else if currentStep == 16 {
@@ -493,7 +497,7 @@ struct OnboardingView: View {
 
     // Create welcome task
     Task {
-      let welcomeDescription = "Run omi for two days to start receiving helpful advice"
+      let welcomeDescription = "Run omi for two days to start receiving helpful insights"
       let alreadyExists = await ActionItemStorage.shared.actionItemExists(
         description: welcomeDescription)
       if !alreadyExists {

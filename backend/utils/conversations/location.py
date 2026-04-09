@@ -6,8 +6,10 @@ from typing import Optional
 import requests
 
 from database.redis_db import r
-from models.conversation import Geolocation
+
+from models.geolocation import Geolocation
 from utils.http_client import get_maps_client, get_maps_semaphore
+
 
 logger = logging.getLogger(__name__)
 

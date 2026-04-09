@@ -33,6 +33,7 @@ _http_mod.get_maps_client = MagicMock()
 _http_mod.get_webhook_client = MagicMock()
 
 from models.conversation import Geolocation
+from models.geolocation import Geolocation
 from utils.conversations.location import get_google_maps_location
 
 
